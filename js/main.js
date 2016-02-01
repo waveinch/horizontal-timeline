@@ -122,7 +122,8 @@ jQuery(document).ready(function($){
 		var eventStyle = window.getComputedStyle(selectedEvent.get(0), null),
 			eventLeft = eventStyle.getPropertyValue("left"),
 			eventWidth = eventStyle.getPropertyValue("width");
-		eventLeft = Number(eventLeft.replace('px', '')) + Number(eventWidth.replace('px', ''))/2;
+		//eventLeft = Number(eventLeft.replace('px', '')) + Number(eventWidth.replace('px', ''))/2;
+        eventLeft = Number(eventLeft.replace('px', ''));
 		var scaleValue = eventLeft/totWidth;
 		setTransformValue(filling.get(0), 'scaleX', scaleValue);
 	}

@@ -116,9 +116,10 @@ Main Components
   position: absolute;
   bottom: 0;
   z-index: 2;
-  text-align: center;
+  text-align: left;
   font-size: 1.3rem;
   padding-bottom: 15px;
+  padding-left: 0.5em;
   color: #383838;
   /* fix bug on Safari - text flickering while timeline translates */
   -webkit-transform: translateZ(0);
@@ -127,11 +128,38 @@ Main Components
   -o-transform: translateZ(0);
   transform: translateZ(0);
 }
+
+.cd-horizontal-timeline .events a h1 {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.cd-horizontal-timeline .events a p {
+  color: rgba(0,0,0,0.3);
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+
+.cd-horizontal-timeline .events a::before {
+  content: " ";
+  background-color: rgba(0,0,0,0.05);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  width: 2px;
+  -webkit-transition: -webkit-background-color 0.3s;
+  -moz-transition: -moz-background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
 .cd-horizontal-timeline .events a::after {
   /* this is used to create the event spot */
   content: '';
   position: absolute;
-  left: 50%;
+  left: 0;
   right: auto;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
@@ -154,6 +182,15 @@ Main Components
 }
 .cd-horizontal-timeline .events a.selected {
   pointer-events: none;
+}
+.cd-horizontal-timeline .events a.selected p {
+  color: rgba(0,0,0,0.8);
+}
+.cd-horizontal-timeline .events a.selected::before {
+  background-color: #7b9d6f;
+  -webkit-transition: -webkit-background-color 0.3s 0.3s;
+  -moz-transition: -moz-background-color 0.3s 0.3s;
+  transition: background-color 0.3s 0.3s;
 }
 .cd-horizontal-timeline .events a.selected::after {
   background-color: #7b9d6f;
