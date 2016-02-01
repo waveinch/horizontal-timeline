@@ -46,7 +46,7 @@ Main Components
 }
 .cd-horizontal-timeline .timeline {
   position: relative;
-  height: 100px;
+  height: 300px;
   width: 90%;
   max-width: 800px;
   margin: 0 auto;
@@ -81,7 +81,7 @@ Main Components
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 49px;
+  top: 149px;
   height: 2px;
   /* width will be set using JavaScript */
   background: #dfdfdf;
@@ -141,6 +141,18 @@ Main Components
   transition: color 0.3s;
 }
 
+.cd-horizontal-timeline .events a img {
+  max-width: 100px;
+  //border: white solid 2px;
+  border-radius: 3px;
+  margin-top: 0.5em;
+  opacity: 0.3;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
 
 .cd-horizontal-timeline .events a::before {
   content: " ";
@@ -183,7 +195,8 @@ Main Components
 .cd-horizontal-timeline .events a.selected {
   pointer-events: none;
 }
-.cd-horizontal-timeline .events a.selected p {
+.cd-horizontal-timeline .events a.selected p,
+.cd-horizontal-timeline .events a:hover p{
   color: rgba(0,0,0,0.8);
 }
 .cd-horizontal-timeline .events a.selected::before {
@@ -191,6 +204,11 @@ Main Components
   -webkit-transition: -webkit-background-color 0.3s 0.3s;
   -moz-transition: -moz-background-color 0.3s 0.3s;
   transition: background-color 0.3s 0.3s;
+}
+
+.cd-horizontal-timeline .events a.selected img,
+.cd-horizontal-timeline .events a:hover img{
+  opacity: 1;
 }
 .cd-horizontal-timeline .events a.selected::after {
   background-color: #7b9d6f;
