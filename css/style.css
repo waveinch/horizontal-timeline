@@ -358,6 +358,7 @@ Main Components
 }
 
 .cd-horizontal-timeline .events-content {
+  display: none; /*demo without content*/
   position: relative;
   width: 100%;
   margin: 2em 0;
