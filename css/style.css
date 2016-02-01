@@ -19,7 +19,7 @@ body {
 }
 
 a {
-  color: #7b9d6f;
+  color: #ff306e;
   text-decoration: none;
 }
 
@@ -97,7 +97,7 @@ Main Components
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: #7b9d6f;
+  background-color: #ff306e;
   -webkit-transform: scaleX(0);
   -moz-transform: scaleX(0);
   -ms-transform: scaleX(0);
@@ -114,11 +114,9 @@ Main Components
 }
 .cd-horizontal-timeline .events a {
   position: absolute;
-  bottom: 0;
   z-index: 2;
   text-align: left;
   font-size: 1.3rem;
-  padding-bottom: 15px;
   padding-left: 0.5em;
   color: #383838;
   /* fix bug on Safari - text flickering while timeline translates */
@@ -127,6 +125,21 @@ Main Components
   -ms-transform: translateZ(0);
   -o-transform: translateZ(0);
   transform: translateZ(0);
+}
+
+.cd-horizontal-timeline .events a .time-content {
+  float: left;
+  max-width: 150px;
+}
+
+.cd-horizontal-timeline .events li:nth-child(odd) a {
+  bottom: 0;
+  padding-bottom: 15px;
+}
+
+.cd-horizontal-timeline .events li:nth-child(even) a {
+  top: 0;
+  padding-top: 15px;
 }
 
 .cd-horizontal-timeline .events a h1 {
@@ -141,11 +154,21 @@ Main Components
   transition: color 0.3s;
 }
 
+.cd-horizontal-timeline .events a .main-icon {
+  float: left;
+  margin-right: 0.5rem;
+  color: rgba(0,0,0,0.3);
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
 .cd-horizontal-timeline .events a img {
   max-width: 100px;
   //border: white solid 2px;
   border-radius: 3px;
   margin-top: 0.5em;
+  clear:both;
   opacity: 0.3;
   box-shadow: 0 0 2px rgba(0,0,0,0.5);
   -webkit-transition: opacity 0.3s;
@@ -167,6 +190,15 @@ Main Components
   transition: background-color 0.3s;
 }
 
+.cd-horizontal-timeline .events li:nth-child(odd) a::after {
+  bottom: -5px;
+  
+}
+
+.cd-horizontal-timeline .events li:nth-child(even) a::after {
+  top: -5px;
+  
+}
 .cd-horizontal-timeline .events a::after {
   /* this is used to create the event spot */
   content: '';
@@ -178,7 +210,6 @@ Main Components
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-  bottom: -5px;
   height: 12px;
   width: 12px;
   border-radius: 50%;
@@ -189,8 +220,8 @@ Main Components
   transition: background-color 0.3s, border-color 0.3s;
 }
 .no-touch .cd-horizontal-timeline .events a:hover::after {
-  background-color: #7b9d6f;
-  border-color: #7b9d6f;
+  background-color: #ff306e;
+  border-color: #ff306e;
 }
 .cd-horizontal-timeline .events a.selected {
   pointer-events: none;
@@ -199,8 +230,12 @@ Main Components
 .cd-horizontal-timeline .events a:hover p{
   color: rgba(0,0,0,0.8);
 }
+.cd-horizontal-timeline .events a.selected .main-icon,
+.cd-horizontal-timeline .events a:hover .main-icon{
+  color: rgba(0,0,0,0.8);
+}
 .cd-horizontal-timeline .events a.selected::before {
-  background-color: #7b9d6f;
+  background-color: #ff306e;
   -webkit-transition: -webkit-background-color 0.3s 0.3s;
   -moz-transition: -moz-background-color 0.3s 0.3s;
   transition: background-color 0.3s 0.3s;
@@ -211,11 +246,11 @@ Main Components
   opacity: 1;
 }
 .cd-horizontal-timeline .events a.selected::after {
-  background-color: #7b9d6f;
-  border-color: #7b9d6f;
+  background-color: #ff306e;
+  border-color: #ff306e;
 }
 .cd-horizontal-timeline .events a.older-event::after {
-  border-color: #7b9d6f;
+  border-color: #ff306e;
 }
 @media only screen and (min-width: 1100px) {
   .cd-horizontal-timeline {
@@ -280,7 +315,7 @@ Main Components
   right: 0;
 }
 .no-touch .cd-timeline-navigation a:hover {
-  border-color: #7b9d6f;
+  border-color: #ff306e;
 }
 .cd-timeline-navigation a.inactive {
   cursor: not-allowed;
