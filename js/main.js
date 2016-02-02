@@ -29,8 +29,8 @@ jQuery(document).ready(function ($) {
       timelineComponents['timelineNavigation'].on('click', '.next', clickNext);
       //detect click on the prev arrow
       timelineComponents['timelineNavigation'].on('click', '.prev', clickPrev);
-      timelineComponents['timelineWrapper'].on('swipeleft', clickNext);
-      timelineComponents['timelineWrapper'].on('swiperight', clickPrev);
+      timelineComponents['timelineWrapper'].on('swipeleft', goToNext);
+      timelineComponents['timelineWrapper'].on('swiperight', goToPrev);
       //detect click on the a single event - show new event content
       timelineComponents['eventsWrapper'].on('click', 'a', function (event) {
         event.preventDefault();
@@ -59,6 +59,14 @@ jQuery(document).ready(function ($) {
           showNewContent(timelineComponents, timelineTotWidth, 'next');
         }
       });
+
+      function goToNext(event) {
+        showNewContent(timelineComponents, timelineTotWidth, 'next');
+      }
+
+      function goToPrev(event) {
+        showNewContent(timelineComponents, timelineTotWidth, 'prev');
+      }
 
       function clickNext(event) {
         event.preventDefault();
@@ -115,9 +123,11 @@ jQuery(document).ready(function ($) {
       timelineTotWidth = Number(timelineComponents['eventsWrapper'].css('width').replace('px', ''));
     var timelineTranslate = getTranslateValue(timelineComponents['eventsWrapper']);
 
-    if ((string == 'next' && eventLeft > timelineWidth - timelineTranslate) || (string == 'prev' && eventLeft < -timelineTranslate)) {
-      translateTimeline(timelineComponents, -eventLeft + timelineWidth / 2, timelineWidth - timelineTotWidth);
-    }
+    //    if ((string == 'next' && eventLeft > timelineWidth - timelineTranslate) || (string == 'prev' && eventLeft < -timelineTranslate)) {
+    //      translateTimeline(timelineComponents, -eventLeft + timelineWidth / 2, timelineWidth - timelineTotWidth);
+    //    }
+
+    translateTimeline(timelineComponents, -eventLeft + timelineWidth * 0.15, timelineWidth - timelineTotWidth);
   }
 
   function translateTimeline(timelineComponents, value, totWidth) {
