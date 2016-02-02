@@ -26,15 +26,11 @@ jQuery(document).ready(function ($) {
       timeline.addClass('loaded');
 
       //detect click on the next arrow
-      timelineComponents['timelineNavigation'].on('click', '.next', function (event) {
-        event.preventDefault();
-        updateSlide(timelineComponents, timelineTotWidth, 'next');
-      });
+      timelineComponents['timelineNavigation'].on('click', '.next', clickNext);
       //detect click on the prev arrow
-      timelineComponents['timelineNavigation'].on('click', '.prev', function (event) {
-        event.preventDefault();
-        updateSlide(timelineComponents, timelineTotWidth, 'prev');
-      });
+      timelineComponents['timelineNavigation'].on('click', '.prev', clickPrev);
+      timelineComponents['timelineWrapper'].on('swipeleft', clickNext);
+      timelineComponents['timelineWrapper'].on('swiperight', clickPrev);
       //detect click on the a single event - show new event content
       timelineComponents['eventsWrapper'].on('click', 'a', function (event) {
         event.preventDefault();
@@ -63,8 +59,20 @@ jQuery(document).ready(function ($) {
           showNewContent(timelineComponents, timelineTotWidth, 'next');
         }
       });
+
+      function clickNext(event) {
+        event.preventDefault();
+        updateSlide(timelineComponents, timelineTotWidth, 'next');
+      }
+
+      function clickPrev(event) {
+        event.preventDefault();
+        updateSlide(timelineComponents, timelineTotWidth, 'prev');
+      }
+
     });
   }
+
 
   function updateSlide(timelineComponents, timelineTotWidth, string) {
     //retrieve translateX value of timelineComponents['eventsWrapper']
@@ -73,10 +81,10 @@ jQuery(document).ready(function ($) {
     //translate the timeline to the left('next')/right('prev')
 
     if (string == 'next') {
-      var translateShift = (translateValue - wrapperWidth + eventsMinDistance) * 0.7;
+      var translateShift = (translateValue - wrapperWidth * 0.8 + eventsMinDistance);
       translateTimeline(timelineComponents, translateShift, wrapperWidth - timelineTotWidth);
     } else {
-      var translateShift = (translateValue + wrapperWidth - eventsMinDistance) * 0.7;
+      var translateShift = (translateValue + wrapperWidth * 0.8 - eventsMinDistance);
       translateTimeline(timelineComponents, translateShift);
     }
   }
