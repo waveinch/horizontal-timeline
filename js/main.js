@@ -26,9 +26,9 @@ jQuery(document).ready(function ($) {
       timeline.addClass('loaded');
 
       //detect click on the next arrow
-      timelineComponents['timelineNavigation'].on('click', '.next', clickNext);
+      timelineComponents['timelineNavigation'].on('click', '.next', goToNext);
       //detect click on the prev arrow
-      timelineComponents['timelineNavigation'].on('click', '.prev', clickPrev);
+      timelineComponents['timelineNavigation'].on('click', '.prev', goToPrev);
       timelineComponents['timelineWrapper'].on('swipeleft', goToNext);
       timelineComponents['timelineWrapper'].on('swiperight', goToPrev);
       //detect click on the a single event - show new event content
@@ -68,12 +68,12 @@ jQuery(document).ready(function ($) {
         showNewContent(timelineComponents, timelineTotWidth, 'prev');
       }
 
-      function clickNext(event) {
+      function slideForward(event) {
         event.preventDefault();
         updateSlide(timelineComponents, timelineTotWidth, 'next');
       }
 
-      function clickPrev(event) {
+      function slideBackward(event) {
         event.preventDefault();
         updateSlide(timelineComponents, timelineTotWidth, 'prev');
       }
