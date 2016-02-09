@@ -99,13 +99,12 @@ jQuery(document).ready(function ($) {
 
   function showNewContent(timelineComponents, timelineTotWidth, string) {
     //go from one event to the next/previous one
-    var visibleContent = timelineComponents['eventsContent'].find('.selected'),
-      newContent = (string == 'next') ? visibleContent.next() : visibleContent.prev();
+    //    var visibleContent = timelineComponents['eventsContent'].find('.selected'),
+    //      newContent = (string == 'next') ? visibleContent.next() : visibleContent.prev();
 
-    if (newContent.length > 0) { //if there's a next/prev event - show it
-      var selectedDate = timelineComponents['eventsWrapper'].find('.selected'),
-        newEvent = (string == 'next') ? selectedDate.parent('li').next('li').children('a') : selectedDate.parent('li').prev('li').children('a');
-
+    var selectedDate = timelineComponents['eventsWrapper'].find('.selected'),
+      newEvent = (string == 'next') ? selectedDate.parent('li').next('li').children('a') : selectedDate.parent('li').prev('li').children('a');
+    if (newEvent.length > 0) { //if there's a next/prev event - show it
       updateFilling(newEvent, timelineComponents['fillingLine'], timelineTotWidth);
       updateVisibleContent(newEvent, timelineComponents['eventsContent']);
       newEvent.addClass('selected');

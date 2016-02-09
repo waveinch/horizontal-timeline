@@ -161,6 +161,7 @@ Main Components
 .cd-horizontal-timeline .events a h1 {
   font-weight: bold;
   margin-bottom: 0.5em;
+  color: #ff306e;
 }
 
 .cd-horizontal-timeline .events a p {
