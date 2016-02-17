@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
   var timelines = $('.cd-horizontal-timeline'),
-    eventsMinDistance = 200;
+    eventsMinDistance = 120;
 
   (timelines.length > 0) && initTimeline(timelines);
 
@@ -39,6 +39,13 @@ jQuery(document).ready(function ($) {
         updateOlderEvents($(this));
         updateFilling($(this), timelineComponents['fillingLine'], timelineTotWidth);
         updateVisibleContent($(this), timelineComponents['eventsContent']);
+      });
+
+      timelineComponents['eventsWrapper'].on('click', '.link', function (event) {
+        var link = $(this).attr('data-href');
+        if (link) {
+          window.open(link, '_blank');
+        }
       });
 
       //on swipe, show next/prev event content
@@ -136,8 +143,8 @@ jQuery(document).ready(function ($) {
     value = (!(typeof totWidth === 'undefined') && value < totWidth) ? totWidth : value; //do not translate more than timeline width
     setTransformValue(eventsWrapper, 'translateX', value + 'px');
     //update navigation arrows visibility
-//    (value == 0) ? timelineComponents['timelineNavigation'].find('.prev').addClass('inactive'): timelineComponents['timelineNavigation'].find('.prev').removeClass('inactive');
-//    (value == totWidth) ? timelineComponents['timelineNavigation'].find('.next').addClass('inactive'): timelineComponents['timelineNavigation'].find('.next').removeClass('inactive');
+    //    (value == 0) ? timelineComponents['timelineNavigation'].find('.prev').addClass('inactive'): timelineComponents['timelineNavigation'].find('.prev').removeClass('inactive');
+    //    (value == totWidth) ? timelineComponents['timelineNavigation'].find('.next').addClass('inactive'): timelineComponents['timelineNavigation'].find('.next').removeClass('inactive');
   }
 
   function updateFilling(selectedEvent, filling, totWidth) {

@@ -3,7 +3,7 @@ $white: white;
 $white_80: rgba(255, 255, 255, 0.8);
 $color_tuatara_approx: #383838;
 $color_desert_storm_approx: #f8f8f8;
-$color_radical_red_approx: #ff306e;
+$color_radical_red_approx: #69359c;
 $color_bon_jour_approx: #dfdfdf;
 $black_30: rgba(0, 0, 0, 0.3);
 $black_50: rgba(0, 0, 0, 0.5);
@@ -119,9 +119,21 @@ a {
         color: $color_radical_red_approx;
       }
       p {
-        color: $black_30;
+        color: $black_50;
         //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
         transition: color 0.3s;
+      }
+      .link {
+        margin-top: 0.5em;
+        color: $color_radical_red_approx;
+        opacity: 0.5;
+        transition: opacity 0.3s;
+        &:hover {
+          opacity: 1;
+          cursor: pointer;
+          cursor: hand;
+          color: darken($color_radical_red_approx, 20%);
+        }
       }
       .main-icon {
         float: left;
@@ -138,14 +150,13 @@ a {
         border-radius: 3px;
         margin-top: 0.5em;
         clear: both;
-        opacity: 0.3;
+        opacity: 0.5;
         //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
         box-shadow: 0 0 2px $black_50;
         //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
         transition: opacity 0.3s;
       }
       &.selected {
-        pointer-events: none;
         p {
           color: $black_80;
         }
@@ -153,6 +164,9 @@ a {
           color: $black_80;
         }
         img {
+          opacity: 1;
+        }
+        .link {
           opacity: 1;
         }
       }
@@ -164,6 +178,9 @@ a {
           color: $black_80;
         }
         img {
+          opacity: 1;
+        }
+        .link {
           opacity: 1;
         }
       }
